@@ -1,0 +1,54 @@
+using System;
+class HelloWorld {
+  static void Main(){
+      Console.WriteLine("Choose a number between 1 to 3 (enter 4 to terminate the program): "); //choose number
+      int user = Convert.ToInt32(Console.ReadLine()); //the integer variable user is going to represent the option the user chooses
+      if (user ==1){ //if user choooses option 1, below happens
+          Console.WriteLine("Enter your measurement in Inches: ");
+          double userInch = Convert.ToDouble(Console.ReadLine()); //coverting to double (in case of decimals), userInch represent Inch value
+          double userCM = userInch * 2.54; //plug in formula, userCM represent CM value 
+          Console.WriteLine($"The converted CM measurement is {userCM} cm."); //output to user
+      }
+      
+      else if (user ==2){
+          Console.WriteLine("Enter the temperature in Fahrenheit: "); 
+          double userF = Convert.ToDouble(Console.ReadLine()); //converting to double, variable userF represent Fahrenheit value
+          double userC = (userF - 32)*5/9; //plug in formula, userC represent Celsius value 
+          Console.WriteLine($"The converted temperature in Celsius value is {userC}.");
+      }
+      
+      else if (user ==3){
+          
+          Console.WriteLine("Enter your 'a'-value: ");
+          double userA = Convert.ToDouble(Console.ReadLine()); //below 3 variables are the a, b, c values on a quadratic equation; all double (in case of decimals)
+          Console.WriteLine("Enter your 'b'-value: ");
+          double userB = Convert.ToDouble(Console.ReadLine());
+          Console.WriteLine("Enter your 'c'-value: ");
+          double userC = Convert.ToDouble(Console.ReadLine());
+          
+          double delta = ((userB)*(userB)) - (4*(userA)*(userC)); //calculating the discriminant using formula given
+        
+          if (delta >0){ //if discriminant is positive, both distinct real roots 
+              double userX1 = (-(userB) + Math.Sqrt(delta))/2*userA; 
+              double userX2 = (-(userB) - Math.Sqrt(delta))/2*userA;
+              Console.WriteLine($"The discriminant is positive. The two distinct roots are {userX1} and {userX2}.");
+          }
+
+          else if (delta == 0){ //if discriminant is zero, only one distinct root 
+              
+              double userZero = (-(userB) + Math.Sqrt(delta))/2*userA;
+              Console.WriteLine($"The discriminant is zero, the one real root is {userZero}.");
+          }
+          else{ // if discriminant is negative, no distinct real roots
+              Console.WriteLine("The discriminant is negative. The equation has two distinct (non-real) roots.");
+          }
+      }
+      else if (user == 4){ //if user inputted 4, the program will not return anything. Instead, it will terminate once the user click "Enter"
+          return;  
+      }
+      else{ //if user inputted a random number besides (1,2,3,4), then program will notify the user to let them try again. 
+          Console.WriteLine("This number is out-of-range. Please try again!");
+      }
+  }
+}
+
